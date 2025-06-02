@@ -1,3 +1,5 @@
+@props(['breadcrumbs' => []])
+
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
@@ -32,19 +34,26 @@
             style="display: none;"
             x-show="siderbarOpen"
             x-on:click="siderbarOpen = false">
-
           </div>
+
         @include('layouts.partials.admin.navigation')
 
         @include('layouts.partials.admin.siderbar')
 
           <div class="p-4 sm:ml-64">
-             <div class="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700 mt-14">
 
-               {{ $slot }}
+            <div class="mt-14">
 
-             </div>
-          </div>
+              @include('layouts.partials.admin.breadcrumb')
+
+              <div class="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700">
+
+
+                {{ $slot }}
+
+              </div>
+            </div>
+        </div>
 
         @livewireScripts
     </body>
